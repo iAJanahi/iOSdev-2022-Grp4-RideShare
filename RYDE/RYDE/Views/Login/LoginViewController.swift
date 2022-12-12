@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import SwiftUI
 
 class LoginViewController: UIViewController {
@@ -57,13 +58,72 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true)
                 return
             }
-            print("Current user \(Auth.auth().currentUser)")
-            UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "user_uid_key")
-    
-            self.performSegue(withIdentifier: "Home", sender: sender)
+            print("Current user \(Auth.auth().currentUser?.uid)")
+            //UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "user_uid_key")
             
+            let uid = Auth.auth().currentUser?.uid
+            let ref = Database.database(url: FBReference.databaseRef).reference()
+            // Seperating the Drivers from the Passengers to different home pages based on ID
+            ref.child("users").child("drivers").observeSingleEvent(of: .value) { (snapsphot) in
+                if let value = snapsphot.value as? NSDictionary {
+                    if value.contains(where: { $0.key as! String == uid }) {
+                        print("This is a driver!")
+                        self.performSegue(withIdentifier: "DriverHome", sender: sender)
+                    }
+                }
+            }
+            
+            ref.child("users").child("passengers").observeSingleEvent(of: .value) { (snapsphot) in
+                if let value = snapsphot.value as? NSDictionary {
+                    if value.contains(where: { $0.key as! String == uid }) {
+                        print("This is a passenger!")
+                        self.performSegue(withIdentifier: "Home", sender: sender)
+                    }
+                }
+            }
         })
     }
+    
+//    @IBAction func checkUserTest(_ sender: Any) {
+//        var DorP = DriverOrPassenger(uid: "NUJt5pMhsvUZIkOlbwgWUTiArIo1")
+//        print(DorP)
+//        if DorP == "D" {
+//            print("Go to Driver Page")
+//        }
+//        else if DorP == "P" {
+//            print("Go to Passenger Page")
+//        }
+//        else {
+//            print("User Not Found!")
+//        }
+//    }
+    
+//    func DriverOrPassenger(uid: String) -> String  {
+//        // Seperating home pages based on user Type. Driver and passenger
+//        let ref = Database.database(url: FBReference.databaseRef).reference()
+//
+//        ref.child("users").child("drivers").observeSingleEvent(of: .value) { (snapsphot) in
+//            if let value = snapsphot.value as? NSDictionary {
+//                if value.contains(where: { $0.key as! String == uid }) {
+//                    print("This is a driver!")
+//
+//                    completion("D")
+//                }
+//            }
+//        }
+//
+//        ref.child("users").child("passengers").observeSingleEvent(of: .value) { (snapsphot) in
+//            if let value = snapsphot.value as? NSDictionary {
+//                if value.contains(where: { $0.key as! String == uid }) {
+//                    print("This is a passenger!")
+//
+//                    return "P"
+//                }
+//            }
+//        }
+//
+//
+//    }
     
 
         
