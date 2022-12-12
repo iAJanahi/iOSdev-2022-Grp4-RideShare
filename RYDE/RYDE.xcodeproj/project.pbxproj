@@ -33,6 +33,7 @@
 		6A90345A294731E900A494E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6A903459294731E900A494E2 /* FirebaseAuth */; };
 		6A90345C294731E900A494E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6A90345B294731E900A494E2 /* FirebaseDatabase */; };
 		6A90345E294732B500A494E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A90345D294732B500A494E2 /* GoogleService-Info.plist */; };
+		6A90346029476D0700A494E2 /* DriverTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A90345F29476D0600A494E2 /* DriverTabBarController.swift */; };
 		6AB50273293C941B006BD3D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB50272293C941B006BD3D6 /* ProfileViewController.swift */; };
 		6AB50279293C9D04006BD3D6 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB50278293C9D04006BD3D6 /* SignupTableViewController.swift */; };
 		6AB5027B293DFCF4006BD3D6 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5027A293DFCF4006BD3D6 /* TabViewController.swift */; };
