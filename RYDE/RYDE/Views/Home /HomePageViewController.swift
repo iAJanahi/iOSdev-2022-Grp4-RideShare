@@ -87,4 +87,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        print("Got back home!")
+        _ = self.tabBarController?.selectedIndex = 1
+    }
 }

@@ -773,9 +773,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="navBarSearchButton" destination="oV8-hg-d4o" id="TnT-3f-S3h"/>
+                        <segue destination="Ynq-oG-Dxm" kind="unwind" identifier="unwindToHome" unwindAction="prepareForUnwindWithSegue:" id="3VG-Kc-SZx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NG3-6P-X6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ynq-oG-Dxm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3469.5652173913045" y="97.767857142857139"/>
         </scene>
@@ -846,29 +848,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRA-d0-VXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5191" y="98"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2Gv-TP-a2Q">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MBk-qn-Tf8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="awt-Ch-JsG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="TVt-9M-Ywf" kind="presentation" destinationCreationSelector="goToConfirmPage:sender:" id="oxC-og-MAC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KI9-nF-NOT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4326" y="16"/>
+            <point key="canvasLocation" x="4614" y="98"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kYt-b1-iMl"/>
         <segue reference="tAS-wp-0rj"/>
     </inferredMetricsTieBreakers>
     <resources>

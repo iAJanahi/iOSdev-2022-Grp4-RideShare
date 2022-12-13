@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RidesListTableViewController: UITableViewController {
+class RidesListTableViewController: UITableViewController, ConfirmFromRideDelegate {
     
     // MARK: Rides List Table View Controller Outlets
     @IBOutlet var navBarSearchButton: UIButton!
@@ -83,6 +83,7 @@ class RidesListTableViewController: UITableViewController {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
+        goToHome()
     }
     
     
@@ -98,12 +99,17 @@ class RidesListTableViewController: UITableViewController {
             print("Entered IF")
             let rideToSend = ridesArray[indexPath.row]
             
-            return confirmViewController(coder: coder, bookedRide: rideToSend)
+            return confirmViewController(coder: coder, bookedRide: rideToSend, selectedSeats: 3)
         }
         else {
             print("ELSE")
             return nil
         }
+    }
+    
+    
+    func goToHome() {
+        self.performSegue(withIdentifier: "unwindToHome", sender: self)
     }
     
 }

@@ -9,21 +9,30 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+protocol ConfirmFromRideDelegate: class {
+    func goToHome()
+}
 class confirmViewController: UIViewController {
 
-    @IBOutlet weak var userName: UILabel!
+    weak var delegation: ConfirmFromRideDelegate?
+    
+    @IBOutlet weak var noOfPassengers: UILabel!
     @IBOutlet weak var toLocation: UILabel!
     @IBOutlet weak var driverName: UILabel!
-    @IBOutlet weak var goingReturnTime: UILabel!
+    @IBOutlet weak var goingTime: UILabel!
+    @IBOutlet weak var returnTime: UILabel!
     @IBOutlet weak var price: UILabel!
     
+    var fullName = ""
     
     
     
     var bookedRide: Ride?
+    var selectedSeats: Int?
     
-    init?(coder: NSCoder, bookedRide: Ride) {
+    init?(coder: NSCoder, bookedRide: Ride, selectedSeats: Int) {
         self.bookedRide = bookedRide
+        self.selectedSeats = selectedSeats
         super.init(coder: coder)
     }
     required init?(coder: NSCoder) {
@@ -33,9 +42,19 @@ class confirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let bookedRide = bookedRide {
+//        getUserName()
+        if let bookedRide = bookedRide, let selectedSeats = selectedSeats {
             print(bookedRide)
-            userName.text = "Something"
+            noOfPassengers.text = "x\(selectedSeats)"
+            toLocation.text = bookedRide.toLocation
+            driverName.text = bookedRide.driver?.firstName
+            goingTime.text = "\(bookedRide.goingTime!)"
+            returnTime.text = "\(bookedRide.returnTime!)"
+            
+            let totalPrice = Double(bookedRide.price!)! * Double(selectedSeats)
+//            print(Double(bookedRide.price!)! + selectedSeats)
+            price.text = "\(totalPrice) BHD"
+            
         }
         else {
             print("Booked ride failed!")
@@ -72,11 +91,12 @@ class confirmViewController: UIViewController {
                     
                     let value = child.element.childSnapshot(forPath: uid!).value as? NSDictionary
                     
-//                    let fName = value?["First Name"] as? String
-//                    let lName = value?["Last Name"] as? String
-//                    let fullName = "\(fName!) \(lName!)"
-//                    self.fullName.text = fullName
-//                    self.emailLabel.text = value? ["Email"] as? String
+                    let fName = value?["First Name"] as? String
+                    let lName = value?["Last Name"] as? String
+                    self.fullName = "\(fName!) \(lName!)"
+                    
+                    print(self.fullName)
+
                     
                     
                 }
@@ -89,7 +109,31 @@ class confirmViewController: UIViewController {
     
     
     @IBAction func payWithAppleButtonTapped(_ sender: Any) {
+//        getUserName()
+        let alert = UIAlertController(title: "Payment Successful", message: "Thank you for your payment !", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+            self.DismissView()
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     @IBAction func payWithBenefitButtonTapped(_ sender: Any) {
+        
     }
+    @IBAction func payWithCashButtonTapped(_ sender: Any) {
+        
+    }
+    
+    func DismissView() {
+        print("Dismiss")
+        dismiss(animated: true)
+//        delegation?.goToHome()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        delegation?.goToHome()
+    }
+    
+
+    
 }
