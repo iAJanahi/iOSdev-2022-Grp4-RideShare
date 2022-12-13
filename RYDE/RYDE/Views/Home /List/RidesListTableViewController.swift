@@ -89,4 +89,21 @@ class RidesListTableViewController: UITableViewController {
     
     // MARK: Firebase
     // Reading from database
+    
+    
+    
+    // Sending data to confirm page
+    @IBSegueAction func goToConfirmPage(_ coder: NSCoder, sender: Any?) -> UIViewController? {
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell)  {
+            print("Entered IF")
+            let rideToSend = ridesArray[indexPath.row]
+            
+            return confirmViewController(coder: coder, bookedRide: rideToSend)
+        }
+        else {
+            print("ELSE")
+            return nil
+        }
+    }
+    
 }
