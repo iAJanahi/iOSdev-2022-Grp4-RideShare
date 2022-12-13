@@ -736,6 +736,7 @@
                                     <outlet property="thursdayIcon" destination="MIE-Bv-3xc" id="2EW-HA-vou"/>
                                     <outlet property="tuesdayIcon" destination="Af2-mx-2Ro" id="Epo-jg-SBB"/>
                                     <outlet property="wednesdayIcon" destination="xsg-F1-yA7" id="DXg-o5-XIO"/>
+                                    <segue destination="TVt-9M-Ywf" kind="presentation" destinationCreationSelector="goToConfirmPage:sender:" id="kYt-b1-iMl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -777,60 +778,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NG3-6P-X6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3469.5652173913045" y="97.767857142857139"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="oxg-1M-VrH">
-            <objects>
-                <viewController id="AiI-xC-JSA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gvX-v3-ong">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsK-nn-DVo">
-                                <rect key="frame" x="173" y="433" width="70" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Submit"/>
-                                <connections>
-                                    <segue destination="3HK-VQ-acT" kind="show" id="kSM-xH-lze"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="FY6-WS-Qap"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="hb9-pX-c1v"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qaa-of-iIs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4406" y="15"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="E3m-eF-ag6">
-            <objects>
-                <viewController id="3HK-VQ-acT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8Fd-8s-0RO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-GC-I31">
-                                <rect key="frame" x="174" y="754" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <segue destination="TVt-9M-Ywf" kind="show" id="luA-TA-mhs"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Gni-DR-wWq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dRr-9I-OiL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GVF-nu-d3w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5309" y="15"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="wpb-6g-c0z">
@@ -899,10 +846,29 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRA-d0-VXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5309" y="470"/>
+            <point key="canvasLocation" x="5191" y="98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Gv-TP-a2Q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MBk-qn-Tf8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="awt-Ch-JsG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TVt-9M-Ywf" kind="presentation" destinationCreationSelector="goToConfirmPage:sender:" id="oxC-og-MAC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KI9-nF-NOT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4326" y="16"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="kYt-b1-iMl"/>
         <segue reference="tAS-wp-0rj"/>
     </inferredMetricsTieBreakers>
     <resources>

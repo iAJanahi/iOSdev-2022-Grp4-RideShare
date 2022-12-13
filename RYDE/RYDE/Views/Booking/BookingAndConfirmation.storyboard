@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bao-Uz-4z5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hTD-HB-28K">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -9,59 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Confirm and proceed to payment-->
-        <scene sceneID="TrC-gv-TYq">
-            <objects>
-                <viewController title="Confirm and proceed to payment" id="Bao-Uz-4z5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DQo-Jx-Ubx">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-wC-vKA">
-                                <rect key="frame" x="96" y="694" width="198" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Confirm &amp; Pay">
-                                            <attributes>
-                                                <font key="NSFont" size="18" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="amj-Tw-6lR" kind="show" id="b3j-mh-HSk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whv-RZ-1Hd">
-                                <rect key="frame" x="135" y="391" width="121" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="YALLA"/>
-                                <connections>
-                                    <segue destination="Ska-vB-PRe" kind="popoverPresentation" popoverAnchorView="whv-RZ-1Hd" id="oAk-Md-d7U">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="T0e-yB-nxf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="b2b-vh-tf1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z68-jV-1d0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5606.1538461538457" y="97.393364928909946"/>
-        </scene>
         <!--Confirm and pay-->
         <scene sceneID="0bO-j2-wkD">
             <objects>
-                <viewController title="Confirm and pay" modalPresentationStyle="overCurrentContext" id="Ska-vB-PRe" customClass="confirmViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Confirm and pay" modalPresentationStyle="overCurrentContext" id="Ska-vB-PRe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0Y-ha-miz">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TcS-w2-gmG">
@@ -129,9 +82,6 @@
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.93626743560000003" green="0.91948753599999999" blue="0.31322893499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="amj-Tw-6lR" kind="show" id="vy6-uh-Ro4"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.5127077699" green="0.77960461380000001" blue="0.82748216389999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -140,17 +90,18 @@
                         <viewLayoutGuide key="safeArea" id="CCE-ku-aPH"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="81n-lP-b3J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yce-8a-6Q1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5604.6153846153848" y="864.45497630331749"/>
+            <point key="canvasLocation" x="6102" y="97"/>
         </scene>
         <!--Summary & Payment-->
         <scene sceneID="zTo-g0-PQK">
             <objects>
-                <viewController title="Summary &amp; Payment" id="hTD-HB-28K" customClass="payViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Summary &amp; Payment" id="hTD-HB-28K" customClass="confirmViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fy0-8m-NWg">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ni7-XG-16R">
@@ -167,7 +118,7 @@
                                             <color key="baseBackgroundColor" red="0.93626743560000003" green="0.91948753599999999" blue="0.31322893499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="ZdJ-0b-BMd" kind="show" id="hmv-3r-ArX"/>
+                                            <action selector="payWithBenefitButtonTapped:" destination="hTD-HB-28K" eventType="touchUpInside" id="QL9-26-0Ua"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fnM-nA-VAj">
@@ -222,15 +173,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X8-2X-CTA">
-                                        <rect key="frame" x="115" y="259" width="106" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.5 BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYP-TS-HY2">
-                                        <rect key="frame" x="229" y="259" width="49" height="21"/>
+                                        <rect key="frame" x="178" y="259" width="49" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -245,11 +189,21 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="payWithAppleButtonTapped:" destination="hTD-HB-28K" eventType="touchUpInside" id="fYR-Cx-xhR"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="applelogo" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-ld-sCP">
                                         <rect key="frame" x="88" y="300" width="81" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X8-2X-CTA">
+                                        <rect key="frame" x="63" y="259" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.5127077699" green="0.77960461380000001" blue="0.82748216389999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -257,17 +211,24 @@
                         <viewLayoutGuide key="safeArea" id="ALV-kp-IhZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="iSV-hX-LYt"/>
+                    <connections>
+                        <outlet property="driverName" destination="T14-f8-hSc" id="aBk-9Z-Ngr"/>
+                        <outlet property="goingReturnTime" destination="nUp-w1-V6t" id="636-In-BAa"/>
+                        <outlet property="price" destination="TYP-TS-HY2" id="hhz-M6-IMF"/>
+                        <outlet property="toLocation" destination="Tuv-jT-78N" id="YRR-ex-cHQ"/>
+                        <outlet property="userName" destination="fV2-xw-dI2" id="y4P-8n-ezg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dA-Bd-2rF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7372.3076923076924" y="96.682464454976298"/>
+            <point key="canvasLocation" x="7808" y="97"/>
         </scene>
         <!--Thank you & Track ur RYDE-->
         <scene sceneID="MYB-Wa-J8L">
             <objects>
                 <viewController title="Thank you &amp; Track ur RYDE" id="L8g-Zr-bVp" customClass="thanksViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s9M-kH-g9O">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63O-Dz-9B3">
@@ -316,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcC-He-WUn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9149.2307692307695" y="96.682464454976298"/>
+            <point key="canvasLocation" x="10078.461538461539" y="96.682464454976298"/>
         </scene>
         <!--RydeHistory-->
         <scene sceneID="jxC-hf-SAz">
@@ -326,14 +287,14 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgd-X6-uES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7295" y="522"/>
+            <point key="canvasLocation" x="9402" y="672"/>
         </scene>
         <!--Track Your RYDE-->
         <scene sceneID="M2m-7W-Y5N">
             <objects>
                 <viewController title="Track Your RYDE" id="Vf7-iY-QKL" customClass="trackViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CH3-F9-oxv">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kmc-Fb-60c">
@@ -402,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnD-As-CXo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10330.76923076923" y="96.682464454976298"/>
+            <point key="canvasLocation" x="11260" y="96.682464454976298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2ia-tZ-kMz">
@@ -411,7 +372,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mN3-Uq-auW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XXT-7A-Aw8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -421,31 +382,27 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGN-JK-cEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8220" y="96.682464454976298"/>
+            <point key="canvasLocation" x="9149.2307692307695" y="96.682464454976298"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="sFg-fD-vmx">
+        <scene sceneID="hMT-gd-1uw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amj-Tw-6lR" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j4I-3v-Xfm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="9Xe-he-Gik"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8kb-Rn-EyG">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YlC-SM-2cK">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hTD-HB-28K" kind="relationship" relationship="rootViewController" id="bW0-52-wdw"/>
+                        <segue destination="Ska-vB-PRe" kind="relationship" relationship="rootViewController" id="dR8-MU-QpS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZr-gn-7HG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxl-FC-SJV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6443.0769230769229" y="96.682464454976298"/>
+            <point key="canvasLocation" x="5277" y="97"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="vy6-uh-Ro4"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="applelogo" width="500" height="500"/>
         <image name="bus.fill" catalog="system" width="128" height="122"/>
