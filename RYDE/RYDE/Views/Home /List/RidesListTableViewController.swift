@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class RidesListTableViewController: UITableViewController, ConfirmFromRideDelegate {
     
@@ -20,6 +21,10 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
         Ride(rideId: "2", goingTime: "Date()", returnTime: "Date()", dateFrom: "Date from", dateTo: "Date to", driver: Driver(firstName: "Fatima", lastName: "Hassan", licenseNumber: 567, gender: "Female"), fromLocation: "Manama", toLocation: "Polytechnic", price: "12.5", daysOfWeek: [2, 4], noOfPassengers: 0, noOfSeats: "9")
     
     ]
+    
+    var tempFrom: String?
+    var tempTo: String?
+    var tempArray: Any?
     
     var rideFilter: rideFilter?
     init?(coder: NSCoder, rideF: rideFilter) {
@@ -83,13 +88,47 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        goToHome()
+        populateRideListData()
     }
     
     
     
     // MARK: Firebase
     // Reading from database
+    func populateRideListData() {
+        ridesArray = []
+        let ref = Database.database(url: FBReference.databaseRef).reference()
+        
+        ref.child("users").child("drivers").observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                for i in value.allKeys {
+                    ref.child("users").child("drivers").child(i as! String).observeSingleEvent(of: .value) {
+                        (rideSnapshot) in
+                        if let rValue = rideSnapshot.value as? NSDictionary {
+//                            print(rValue["Rides"])
+//                            print(rValue.allKeys)
+                            self.tempArray = rValue["Rides"]
+                        }
+                        else {
+                            print("Inner value not found!")
+                        }
+                        
+                    }
+                }
+//                print(value.allKeys)
+            }
+            else {
+                print("Value Not Found: Error Fetching data!")
+            }
+            
+//            print(value?.allKeys)
+            
+            print(self.tempArray)
+            
+        }
+        
+    }
+    
     
     
     
