@@ -6,9 +6,13 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
-class EditProfileTableViewController: UITableViewController {
+
+class EditProfileTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var users: Users?
     var userType = String()
@@ -16,16 +20,85 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var editPhoneNum: UITextField!
+    
     @IBOutlet var profilePicture: UIImageView!
     @IBOutlet weak var editPass: UITextField!
     
+    
+    private let storage = Storage.storage().reference()
+    private let uid = Auth.auth().currentUser?.uid
+    
     @IBAction func editProfileButton(_ sender: Any) {
+     let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        guard let imageData = image.pngData() else { return }
+        
+        storage.child("images/\(uid!)_image").putData(imageData, metadata: nil, completion: { _, error in guard error == nil else {
+            print("Failed to upload")
+            return
+        }
+            self.storage.child("images/\(self.uid!)_image").downloadURL(completion: { url, error in guard let url = url, error == nil else {
+                return
+            }
+                let urlString = url.absoluteString
+                
+                DispatchQueue.main.async {
+                    self.profilePicture.image = image
+                }
+                
+                print("IMAGE URL \(urlString)")
+                UserDefaults.standard.set(urlString, forKey: "url")
+                
+                
+                
+                
+            })
+        })
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 
+//    func uploadPhoto () {
+//        guard profilePicture != nil else {
+//            return
+//        }
+//        let storageRef = Storage.storage().reference()
+//        let imageDate = profilePicture!.jpegData(compressionQuality: 0.8)
+//    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateProfile()
+        
+        profilePicture.contentMode = .scaleAspectFit
         //getInformation()
+        
+        guard let urlString = UserDefaults.standard.value(forKey: "url") as? String, let url = URL(string: urlString) else {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in guard let data = data, error == nil else {
+            return
+        }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                self.profilePicture.image = image
+            }
+        })
+        task.resume()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +113,6 @@ class EditProfileTableViewController: UITableViewController {
 
         let uid = Auth.auth().currentUser?.uid
    
-        print(uid!)
         
         if !nameField.text!.isEmpty && !editPhoneNum.text!.isEmpty && !editPass.text!.isEmpty && !lastNameField.text!.isEmpty {
             print("working")
@@ -51,30 +123,6 @@ class EditProfileTableViewController: UITableViewController {
     }
         
 
-    
-//    func getInformation() {
-//        let db = Firestore.firestore()
-//        let userID = Auth.auth().currentUser?.uid
-//
-//        db.collection("Users").whereField("UserId", isEqualTo: userID!).addSnapshotListener { (snap, err ) in
-//            if err != nil {
-//                print((err?.localizedDescription)!)
-//                return
-//            }
-//
-//            for i in snap!.documentChanges {
-//                let userName = i.document.get("UserName") as! String
-//                let userPhoneNum = i.document.get("userPhoneNumber") as! String
-//                let userPass = i.document.get("UserPassword") as! String
-//                DispatchQueue.main.async {
-//                    self.nameField.text = "\(userName)"
-//                    self.editPhoneNum.text = "\(userPhoneNum)"
-//                    self.editPass.text = "\(userPass)"
-//                }
-//            }
-//        }
-//    }
-    
     func populateProfile() {
         
         let ref = Database.database(url: "https://ryde-33483-default-rtdb.europe-west1.firebasedatabase.app/").reference()
@@ -99,15 +147,44 @@ class EditProfileTableViewController: UITableViewController {
                     self.lastNameField.text = value? ["Last Name"] as? String
                     self.editPhoneNum.text = value? ["Phone Number"] as? String
                     self.editPass.text = value? ["Password"] as? String
+
                     
-                    
+
                 }
             }
         }
             
         })
     }
-}
+//    @IBAction func didTapButton() {
+//        let picker = UIImagePickerController()
+//        picker.sourceType = .photoLibrary
+//        picker.delegate = self
+//        picker.allowsEditing = true
+//        present(picker, animated: true)
+//    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+//        picker.dismiss(animated: true, completion: nil)
+//        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+//            return
+//        }
+//        guard let imageData = image.pngData() else {
+//            return
+//        }
+//
+//    }
+//
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//
+//
+//
+//
+//
+//
+//
+//}
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -178,3 +255,4 @@ class EditProfileTableViewController: UITableViewController {
     */
 
 
+}

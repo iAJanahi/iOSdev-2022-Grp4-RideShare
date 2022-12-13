@@ -1,62 +1,91 @@
 //
-//  driverProfileTableViewController.swift
+//  EditProfilePassengerTableViewController.swift
 //  RYDE
 //
-//  Created by iOSdev on 12/12/2022.
+//  Created by iOSdev on 13/12/2022.
 //
 
 import UIKit
+import UIKit
+import FirebaseCore
+import FirebaseFirestore
 import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 
 
-class driverProfileTableViewController: UITableViewController {
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var driverNameLbl: UILabel!
-    @IBOutlet weak var driverPhoneLbl: UILabel!
-    @IBOutlet weak var busNoLbl: UILabel!
+class EditProfilePassengerTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var users: Users?
+    var userType = String()
     
     
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
+    @IBOutlet weak var phoneNumberField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateProfile()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        populateProfile()
+    }
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let destination = segue.destination as? ProfileViewController
+            let ref = Database.database(url: "https://ryde-33483-default-rtdb.europe-west1.firebasedatabase.app").reference()
+            destination?.fullName.text = firstNameField.text
+            destination?.fullName.text = lastNameField.text
 
-        
-        func populateLabels() {
-            let ref = Database.database(url: "https://ryde-33483-default-rtdb.europe-west1.firebasedatabase.app/").reference()
             let uid = Auth.auth().currentUser?.uid
+       
+            print(uid!)
             
-            guard uid != nil else {
-                print("Error Fetching User ID")
-                return
+            if !firstNameField.text!.isEmpty && !phoneNumberField.text!.isEmpty && !passwordField.text!.isEmpty && !lastNameField.text!.isEmpty {
+                print("working")
+                ref.child("users").child(userType).child(uid!).updateChildValues(["First Name": self.firstNameField.text!, "Last Name": self.lastNameField.text! , "Phone Number": self.phoneNumberField.text! , "Password": self.passwordField.text! ])
             }
             
-            print(uid!)
-            ref.child("drivers").observeSingleEvent(of: .value, with: { snapshot in if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                            
-                for child in result.enumerated() {
+       
+        }
+    
+    func populateProfile() {
+        
+        let ref = Database.database(url: "https://ryde-33483-default-rtdb.europe-west1.firebasedatabase.app/").reference()
+        let uid = Auth.auth().currentUser?.uid
+
+        guard uid != nil else {
+            print("Error Fetching User ID")
+            return
+        }
+
+        ref.child("users").observeSingleEvent(of: .value, with: { snapshot in if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                        
+            for child in result.enumerated() {
+                
+                if child.element.hasChild(uid!) {
                     
-                    if child.element.hasChild(uid!) {
-                        
-                        let value = child.element.childSnapshot(forPath: uid!).value as? NSDictionary
-                        
-                        let fName = value?["First Name"] as? String
-                        let lName = value?["Last Name"] as? String
-                        let fullName = "\(fName!) \(lName!)"
-                        self.driverNameLbl.text = fullName
-                        self.driverPhoneLbl.text = value? ["Phone Number"] as? String
-                        self.busNoLbl.text = value? ["Bus Number"] as? String
-                        
-                        
-                    }
+                    self.userType = child.element.key
+                    
+                    let value = child.element.childSnapshot(forPath: uid!).value as? NSDictionary
+                    
+                    self.firstNameField.text = value?["First Name"] as? String
+                    self.lastNameField.text = value? ["Last Name"] as? String
+                    self.phoneNumberField.text = value? ["Phone Number"] as? String
+                    self.passwordField.text = value? ["Password"] as? String
+                    
+                    
                 }
             }
-                
-            })
-                
         }
+            
+        })
+    }
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -131,4 +160,4 @@ class driverProfileTableViewController: UITableViewController {
     }
     */
 
-}
+

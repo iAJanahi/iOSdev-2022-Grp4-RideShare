@@ -34,12 +34,21 @@ class SignupTableViewController: UITableViewController {
             bdoPicker.isHidden = !isCheckInDatePickerVisible
         }
     }
+    func updateDateViews () {
 
+    bdoDateLabel.text = bdoPicker.date.formatted(date: .abbreviated,time: .omitted)
+  
+    }
     override func viewDidLoad() {
+        updateDateViews()
         super.viewDidLoad()
-        
+
     }
 
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        updateDateViews()
+    }
+    
     @IBAction func register(_ sender: UIButton) {
         guard let firstName = firsNameField.text,!firstName.isEmpty,
               let lastName = lastNameField.text,!lastName.isEmpty,
