@@ -11,10 +11,11 @@ import FirebaseDatabase
 
 class ProfileViewController: UIViewController {
 
-
+    
+    
     @IBOutlet weak var fullName: UILabel!
-    @IBOutlet var emailLabel: UILabel!
-
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     var userType = ["Drivers", "Passengers"]
     
@@ -76,21 +77,15 @@ class ProfileViewController: UIViewController {
             
     }
     
+ 
+    @IBAction func unwindToProfileDriver(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind", let sourceViewController = segue.source as? EditProfileTableViewController else {return}
+        
+        fullName.text = sourceViewController.nameField.text
     
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func unwindToProfile(segue: UIStoryboardSegue) {
+    @IBAction func unwindToProfilePass(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveUnwind", let sourceViewController = segue.source as? EditProfileTableViewController else {return}
         
         fullName.text = sourceViewController.nameField.text

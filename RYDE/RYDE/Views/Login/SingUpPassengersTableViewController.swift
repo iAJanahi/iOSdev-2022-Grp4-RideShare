@@ -32,10 +32,22 @@ class SingUpPassengersTableViewController: UITableViewController {
             datePicker.isHidden = !isCheckInDatePickerVisible1
         }
     }
+    func updateDateView () {
+
+        dobLabel1.text = datePicker.date.formatted(date: .abbreviated,time: .omitted)
+  
+    }
     
     override func viewDidLoad() {
+        updateDateView()
         super.viewDidLoad()
     }
+    
+    @IBAction func datePickerValue(_ sender: UIDatePicker) {
+        updateDateView()
+        
+    }
+    
     override func tableView(_ tableView: UITableView,
        heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
