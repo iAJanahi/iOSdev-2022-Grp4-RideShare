@@ -15,7 +15,10 @@ protocol DriverHomePageDelegate: class {
 class AddEditRideTableViewController: UITableViewController {
 
     weak var delegation: DriverHomePageDelegate?
-    
+    let dId = Auth.auth().currentUser?.uid // When we know the driver ID it will be here
+    var fullName = ""
+    var gender = ""
+
     
     @IBOutlet var fromTextField: UITextField!
     @IBOutlet var toTextField: UITextField!
@@ -53,6 +56,7 @@ class AddEditRideTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getDriverInfo()
         // Setting a minimum date for the calendar date and time
         let calendar = Calendar(identifier: .gregorian)
         let currentDate = Date()
@@ -110,7 +114,6 @@ class AddEditRideTableViewController: UITableViewController {
         }))
 
         let ref = Database.database(url: FBReference.databaseRef).reference()
-        let dId = Auth.auth().currentUser?.uid // When we know the driver ID it will be here
 //        print(dId)
         let rId = UUID().uuidString // Ride ID
         print("Ride id: \(rId)")
@@ -126,7 +129,9 @@ class AddEditRideTableViewController: UITableViewController {
             "NoOfSeats": noOfSeats,
             "PricePerRide": price,
             "DaysOfWeek": daysOfWeekArray,
-            "NoOfPassengers": 0
+            "NoOfPassengers": 0,
+            "DriverName": fullName,
+            "Gender": gender
         ])
         
         self.delegation?.refreshData()
@@ -238,6 +243,29 @@ class AddEditRideTableViewController: UITableViewController {
             print("Error: No Button for the days of week!")
         }
     }
+    
+    func getDriverInfo() {
+        let ref = Database.database(url: FBReference.databaseRef).reference()
+//        print("This is the ID of current user: \(dId!)")
+        ref.child("users").child("drivers").child("\(dId!)").observeSingleEvent(of: .value) { [self] (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                fullName = "\(value["First Name"]) \(value["Last Name"])"
+                gender = "\(value["Gender"])"
+          
+            }
+            else {
+                print("Value Not Found: Error Fetching data!")
+            }
+            
+//            print(value?.allKeys)
+            
+            
+            
+        }
+    }
+    
+    
+    
     
     
 }
