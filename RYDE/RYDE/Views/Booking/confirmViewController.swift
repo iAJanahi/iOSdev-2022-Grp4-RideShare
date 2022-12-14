@@ -47,7 +47,7 @@ class confirmViewController: UIViewController {
             print(bookedRide)
             noOfPassengers.text = "x\(selectedSeats)"
             toLocation.text = bookedRide.toLocation
-            driverName.text = bookedRide.driver?.firstName
+            driverName.text = bookedRide.driverName
             goingTime.text = "\(bookedRide.goingTime!)"
             returnTime.text = "\(bookedRide.returnTime!)"
             

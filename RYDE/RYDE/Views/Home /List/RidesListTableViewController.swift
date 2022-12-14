@@ -16,15 +16,17 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
 
     // MARK: Rides List Table View Controller Variables
     // Demo array for the rides
-    var ridesArray = [
-        Ride(rideId: "1", goingTime: "Date()", returnTime: "Date()", dateFrom: "Date from", dateTo: "Date to", driver: Driver(firstName: "Mohammed", lastName: "Jassim", licenseNumber: 123, gender: "Male"), fromLocation: "Muharraq", toLocation: "University of Bahrain", price: "2.5", daysOfWeek: [1, 3, 5], noOfPassengers: 2, noOfSeats: "16"),
-        Ride(rideId: "2", goingTime: "Date()", returnTime: "Date()", dateFrom: "Date from", dateTo: "Date to", driver: Driver(firstName: "Fatima", lastName: "Hassan", licenseNumber: 567, gender: "Female"), fromLocation: "Manama", toLocation: "Polytechnic", price: "12.5", daysOfWeek: [2, 4], noOfPassengers: 0, noOfSeats: "9")
+//    var ridesArray = [
+//        Ride(rideId: "1", goingTime: "Date()", returnTime: "Date()", dateFrom: "Date from", dateTo: "Date to", driver: Driver(firstName: "Mohammed", lastName: "Jassim", licenseNumber: 123, gender: "Male"), fromLocation: "Muharraq", toLocation: "University of Bahrain", price: "2.5", daysOfWeek: [1, 3, 5], noOfPassengers: 2, noOfSeats: "16"),
+//        Ride(rideId: "2", goingTime: "Date()", returnTime: "Date()", dateFrom: "Date from", dateTo: "Date to", driver: Driver(firstName: "Fatima", lastName: "Hassan", licenseNumber: 567, gender: "Female"), fromLocation: "Manama", toLocation: "Polytechnic", price: "12.5", daysOfWeek: [2, 4], noOfPassengers: 0, noOfSeats: "9")
+//
+//    ]
     
-    ]
+    var ridesArray = [Ride]()
     
     var tempFrom: String?
     var tempTo: String?
-    var tempArray: Any?
+//    var tempArray: Any?
     
     var rideFilter: rideFilter?
     init?(coder: NSCoder, rideF: rideFilter) {
@@ -38,6 +40,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        populateRideListData()
 //        print(ridesArray)
         if let rideFilter = rideFilter {
             print(rideFilter)
@@ -47,6 +50,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
             print("No filter was selected!")
         }
         print(ridesArray.count)
+        print(ridesArray)
     }
 
     // MARK: - Table view data source
@@ -88,7 +92,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        populateRideListData()
+//        populateRideListData()
     }
     
     
@@ -96,35 +100,72 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     // MARK: Firebase
     // Reading from database
     func populateRideListData() {
-        ridesArray = []
+//        ridesArray = []
+        var tempArray: NSDictionary?
         let ref = Database.database(url: FBReference.databaseRef).reference()
         
-        ref.child("users").child("drivers").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("users").child("drivers").observeSingleEvent(of: .value) { [self] (snapshot) in
             if let value = snapshot.value as? NSDictionary {
                 for i in value.allKeys {
-                    ref.child("users").child("drivers").child(i as! String).observeSingleEvent(of: .value) {
+//                    print(i)
+                    ref.child("users").child("drivers").child(i as! String).child("Rides").observeSingleEvent(of: .value) {
                         (rideSnapshot) in
-                        if let rValue = rideSnapshot.value as? NSDictionary {
-//                            print(rValue["Rides"])
+        
+                        if let rValue = rideSnapshot.value as? NSDictionary{
 //                            print(rValue.allKeys)
-                            self.tempArray = rValue["Rides"]
+                            for j in rValue.allKeys {
+                                ref.child("users").child("drivers").child(i as! String).child("Rides").child("\(j)").observeSingleEvent(of: .value) {
+                                    (infoSnapshot) in
+                                    
+                                    if let infoValue = infoSnapshot.value as? NSDictionary {
+//                                        print(infoValue["from"])
+                                        // Check if Ride ID does exist in the array already
+//                                        print(infoValue)
+                                        if !self.ridesArray.contains(where: {$0.rideId == j as! String}) {
+                                            self.ridesArray.append(
+                                                Ride(rideId: j as? String,
+                                                     goingTime: infoValue["goingTime"]  as? String,
+                                                     returnTime: infoValue["returnTime"]  as? String,
+                                                     dateFrom: infoValue["fromDate"] as? String,
+                                                     dateTo: infoValue["toDate"] as? String,
+                                                     driverName: infoValue["DriverName"] as? String,
+                                                     driverGender: infoValue["Gender"] as? String,
+                                                     fromLocation: infoValue["fromLocation"]  as? String,
+                                                     toLocation: infoValue["toLocation"]  as? String,
+                                                     price: infoValue["PricePerRide"] as? String,
+                                                     daysOfWeek: infoValue["DaysOfWeek"] as? [Int],
+                                                     noOfSeats: infoValue["NoOfSeats"] as? String
+                                                    )
+                                            )
+
+                                            print("Data for ride ID: \(j)  -- loaded and saved to array...")
+//                                            print(self.ridesArray)
+                                            self.tableView.reloadData()
+                                        }
+                                        
+                                        
+                                    }
+                                }
+                            }
+
+
+
                         }
+                        
+                        
+                        
+                        
                         else {
                             print("Inner value not found!")
                         }
                         
                     }
                 }
-//                print(value.allKeys)
+
             }
             else {
                 print("Value Not Found: Error Fetching data!")
             }
-            
-//            print(value?.allKeys)
-            
-            print(self.tempArray)
-            
         }
         
     }

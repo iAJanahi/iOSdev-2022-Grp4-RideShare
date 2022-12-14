@@ -14,7 +14,9 @@ struct Ride {
     var returnTime: String?
     var dateFrom: String?
     var dateTo: String?
-    var driver: Driver?
+//    var driver: Driver?
+    var driverName: String?
+    var driverGender: String?
     var fromLocation: String?
     var toLocation: String?
     var price: String?

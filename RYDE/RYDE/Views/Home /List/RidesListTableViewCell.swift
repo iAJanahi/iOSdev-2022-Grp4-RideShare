@@ -42,18 +42,21 @@ class RidesListTableViewCell: UITableViewCell {
     
     func configureCell(ride: Ride) {
         
-        if let firstName = ride.driver?.firstName, let lastName = ride.driver?.lastName,
-           let gTime = ride.goingTime, let rTime = ride.returnTime,
-           let price = ride.price, let seatNo = ride.noOfSeats {
-            driverNameLabel.text = "\(firstName) \(lastName)"
-//            locationLabel.text = "to \(location)"
+
+        if let gTime = ride.goingTime,
+           let rTime = ride.returnTime,
+           let price = ride.price, 
+           let seatNo = ride.noOfSeats,
+           let driverName = ride.driverName
+//           let driverGender = ride.driverGender
+        {
             goingTimeLabel.text = "\(gTime)"
             returnTimeLabel.text = "\(rTime)"
-            
             priceLabel.text = "\(price) BD"
-            
             passengersLabel.text = "\(ride.noOfPassengers)/\(seatNo)"
+            driverNameLabel.text = "\(driverName)"
         }
+        
         
         if let days = ride.daysOfWeek {
             //            print("DoW: \(days)")
