@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 protocol DriverHomePageDelegate: class {
     func refreshData()
@@ -109,9 +110,13 @@ class AddEditRideTableViewController: UITableViewController {
         }))
 
         let ref = Database.database(url: FBReference.databaseRef).reference()
-        let dId = "4" // When we know the driver ID it will be here
+        let dId = Auth.auth().currentUser?.uid // When we know the driver ID it will be here
+//        print(dId)
         let rId = UUID().uuidString // Ride ID
-        ref.child("driver").child(dId).child("rides").child(rId).setValue([
+        print("Ride id: \(rId)")
+        // Adding dummy data for the delete (to delete we must have atleast one value in the Rides)
+        
+        ref.child("users").child("drivers").child("\(dId!)").child("Rides").child(rId).setValue([
             "fromLocation": fromLoc,
             "toLocation": toLoc,
             "goingTime": tempGoing,

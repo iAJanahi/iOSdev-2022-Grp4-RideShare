@@ -73,7 +73,10 @@ class SignupTableViewController: UITableViewController {
             }
             let ref = Database.database(url: "https://ryde-33483-default-rtdb.europe-west1.firebasedatabase.app").reference()
             let uid = Auth.auth().currentUser?.uid
-            ref.child("users").child("drivers").child(uid!).setValue([ "First Name" : self.firsNameField.text, "Last Name" : self.lastNameField.text, "CPR" : self.cprField.text , "Phone" : self.phoneField.text, "Email" : self.emailField.text, "Password" : self.passwordField.text, "Confirm Password" : self.confirmPasswordField.text , "Driving No" : self.drivingNoField.text, "Bus Model" : self.modelField.text, "Bus Number": self.busNoField.text ,"Bus Color": self.ColorField.text, "Number of Seats": self.noOfSeatsField.text ])
+            ref.child("users").child("drivers").child(uid!).setValue([ "First Name" : self.firsNameField.text, "Last Name" : self.lastNameField.text, "CPR" : self.cprField.text , "Phone" : self.phoneField.text, "Email" : self.emailField.text, "Password" : self.passwordField.text, "Confirm Password" : self.confirmPasswordField.text , "Driving No" : self.drivingNoField.text, "Bus Model" : self.modelField.text, "Bus Number": self.busNoField.text ,"Bus Color": self.ColorField.text, "Number of Seats": self.noOfSeatsField.text, "Rides": [
+                "DUMMY": 0
+            ] ])
+            
             
             let alert = UIAlertController(title: "Success", message: "Account Successfully created", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in

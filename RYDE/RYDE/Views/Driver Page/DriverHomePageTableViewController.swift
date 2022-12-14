@@ -7,9 +7,11 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class DriverHomePageTableViewController: UITableViewController, DriverHomePageDelegate, UISearchBarDelegate {
     
+    let dId = Auth.auth().currentUser?.uid
 
     // MARK: DriverHomePage Outlets
     @IBOutlet var searchBar: UISearchBar!
@@ -68,13 +70,18 @@ class DriverHomePageTableViewController: UITableViewController, DriverHomePageDe
     func populateData() {
         ridesArray = []
         let ref = Database.database(url: FBReference.databaseRef).reference()
-        
-        ref.child("driver").child("4").child("rides").observeSingleEvent(of: .value) { [self] (snapshot) in
+        // Get current user (driver) ID
+//        print("This is the ID of current user: \(dId!)")
+        ref.child("users").child("drivers").child("\(dId!)").child("Rides").observeSingleEvent(of: .value) { [self] (snapshot) in
             if let value = snapshot.value as? NSDictionary {
+//                print(value)
                 for i in value.allKeys {
-                    ref.child("driver").child("4").child("rides").child("\(i)").observeSingleEvent(of: .value) {
+                    print(i)
+                    ref.child("users").child("drivers").child("\(dId!)").child("Rides").child("\(i)").observeSingleEvent(of: .value) {
                         (dataSnapshot) in
+//                        print(dataSnapshot)
                         if let value = dataSnapshot.value as? NSDictionary {
+                            print(value.allKeys)
 //                            print(value["fromLocation"])
 //                            self.ridesArray = []
                             if self.ridesArray.isEmpty {
@@ -97,7 +104,7 @@ class DriverHomePageTableViewController: UITableViewController, DriverHomePageDe
                                 self.tableView.reloadData()
                             }
                             else {
-                                print(i)
+//                                print(i)
                                 if !self.ridesArray.contains(where: {$0.rideId == i as! String}) {
                                     self.ridesArray.append(
                                         Ride(rideId: i as? String,
@@ -184,7 +191,7 @@ class DriverHomePageTableViewController: UITableViewController, DriverHomePageDe
 //            print(ridesArray[indexPath.row].rideId)
             
             let ref = Database.database(url: FBReference.databaseRef).reference()
-            ref.child("driver").child("4").child("rides").child("\(ridesArray[indexPath.row].rideId!)").removeValue()
+            ref.child("users").child("drivers").child("\(dId!)").child("Rides").child("\(ridesArray[indexPath.row].rideId!)").removeValue()
             
             
             ridesArray.remove(at: indexPath.row)
