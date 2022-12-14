@@ -14,10 +14,6 @@
 		6A9034422947173B00A494E2 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A90343C2947173B00A494E2 /* Driver.swift */; };
 		6A9034432947173B00A494E2 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A90343D2947173B00A494E2 /* Ride.swift */; };
 		6A90344D29472EF100A494E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A90344C29472EF100A494E2 /* GoogleService-Info.plist */; };
-		6A9034542947311B00A494E2 /* DriverHomePageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9034502947311B00A494E2 /* DriverHomePageTableViewController.swift */; };
-		6A9034552947311B00A494E2 /* DriverHomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9034512947311B00A494E2 /* DriverHomePage.storyboard */; };
-		6A9034562947311B00A494E2 /* AddEditRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9034522947311B00A494E2 /* AddEditRideTableViewController.swift */; };
-		6A9034572947311B00A494E2 /* DriverRideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9034532947311B00A494E2 /* DriverRideListTableViewCell.swift */; };
 		6A90345A294731E900A494E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6A903459294731E900A494E2 /* FirebaseAuth */; };
 		6A90345C294731E900A494E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6A90345B294731E900A494E2 /* FirebaseDatabase */; };
 		6A90345E294732B500A494E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A90345D294732B500A494E2 /* GoogleService-Info.plist */; };
@@ -49,6 +45,11 @@
 		6AC8B77F2948BA3A005E7C66 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC8B77E2948BA3A005E7C66 /* FirebaseFirestore */; };
 		6AC8B7812948BA3A005E7C66 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC8B7802948BA3A005E7C66 /* FirebaseStorage */; };
 		6AC8B7832948BB70005E7C66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC8B7822948BB70005E7C66 /* Main.storyboard */; };
+		6AC8B78A294A00A3005E7C66 /* DriverHomePageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8B785294A00A3005E7C66 /* DriverHomePageTableViewController.swift */; };
+		6AC8B78B294A00A3005E7C66 /* DriverHomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC8B786294A00A3005E7C66 /* DriverHomePage.storyboard */; };
+		6AC8B78C294A00A3005E7C66 /* AddEditRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8B787294A00A3005E7C66 /* AddEditRideTableViewController.swift */; };
+		6AC8B78D294A00A3005E7C66 /* PassengerNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8B788294A00A3005E7C66 /* PassengerNoViewController.swift */; };
+		6AC8B78E294A00A3005E7C66 /* DriverRideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8B789294A00A3005E7C66 /* DriverRideListTableViewCell.swift */; };
 		6AC90C02293C69F000A75257 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC90C01293C69F000A75257 /* FirebaseAuth */; };
 		6AC90C04293C69F000A75257 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC90C03293C69F000A75257 /* FirebaseDatabase */; };
 		6AC90C06293C69F000A75257 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC90C05293C69F000A75257 /* FirebaseFirestore */; };
@@ -88,10 +89,6 @@
 		6A90343C2947173B00A494E2 /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		6A90343D2947173B00A494E2 /* Ride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		6A90344C29472EF100A494E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6A9034502947311B00A494E2 /* DriverHomePageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverHomePageTableViewController.swift; sourceTree = "<group>"; };
-		6A9034512947311B00A494E2 /* DriverHomePage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriverHomePage.storyboard; sourceTree = "<group>"; };
-		6A9034522947311B00A494E2 /* AddEditRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditRideTableViewController.swift; sourceTree = "<group>"; };
-		6A9034532947311B00A494E2 /* DriverRideListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverRideListTableViewCell.swift; sourceTree = "<group>"; };
 		6A90345D294732B500A494E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6AB50278293C9D04006BD3D6 /* SignupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		6AC52A3E2941E6B10044D9AE /* SingUpPassengersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpPassengersTableViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +116,11 @@
 		6AC8B7712948B715005E7C66 /* DriverProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriverProfile.storyboard; sourceTree = "<group>"; };
 		6AC8B77B2948B8BE005E7C66 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6AC8B7822948BB70005E7C66 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6AC8B785294A00A3005E7C66 /* DriverHomePageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverHomePageTableViewController.swift; sourceTree = "<group>"; };
+		6AC8B786294A00A3005E7C66 /* DriverHomePage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriverHomePage.storyboard; sourceTree = "<group>"; };
+		6AC8B787294A00A3005E7C66 /* AddEditRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditRideTableViewController.swift; sourceTree = "<group>"; };
+		6AC8B788294A00A3005E7C66 /* PassengerNoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerNoViewController.swift; sourceTree = "<group>"; };
+		6AC8B789294A00A3005E7C66 /* DriverRideListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverRideListTableViewCell.swift; sourceTree = "<group>"; };
 		6AEB42B1293C85EB00B2A949 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6AF07974292F7F9D0000A3F7 /* RYDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RYDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF07977292F7F9D0000A3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,7 +175,7 @@
 				6AC8B7422948AC07005E7C66 /* Home  */,
 				6AC8B75D2948AC9D005E7C66 /* Booking */,
 				6A54898129349D0600ED29FF /* History */,
-				6A90344F2947311B00A494E2 /* Driver Page */,
+				6AC8B784294A00A3005E7C66 /* Driver Page */,
 				6AC8B7682948B715005E7C66 /* Profile */,
 			);
 			path = Views;
@@ -211,18 +213,6 @@
 				6A90343D2947173B00A494E2 /* Ride.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		6A90344F2947311B00A494E2 /* Driver Page */ = {
-			isa = PBXGroup;
-			children = (
-				6A9034512947311B00A494E2 /* DriverHomePage.storyboard */,
-				6A9034502947311B00A494E2 /* DriverHomePageTableViewController.swift */,
-				6A9034522947311B00A494E2 /* AddEditRideTableViewController.swift */,
-				6A9034532947311B00A494E2 /* DriverRideListTableViewCell.swift */,
-			);
-			name = "Driver Page";
-			path = "../../../../../../.Trash/Driver Page";
 			sourceTree = "<group>";
 		};
 		6AC8B7422948AC07005E7C66 /* Home  */ = {
@@ -281,6 +271,19 @@
 				6AC8B7712948B715005E7C66 /* DriverProfile.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		6AC8B784294A00A3005E7C66 /* Driver Page */ = {
+			isa = PBXGroup;
+			children = (
+				6AC8B785294A00A3005E7C66 /* DriverHomePageTableViewController.swift */,
+				6AC8B786294A00A3005E7C66 /* DriverHomePage.storyboard */,
+				6AC8B787294A00A3005E7C66 /* AddEditRideTableViewController.swift */,
+				6AC8B788294A00A3005E7C66 /* PassengerNoViewController.swift */,
+				6AC8B789294A00A3005E7C66 /* DriverRideListTableViewCell.swift */,
+			);
+			name = "Driver Page";
+			path = "../../../../../../Documents/Driver Page";
 			sourceTree = "<group>";
 		};
 		6AF0796B292F7F9D0000A3F7 = {
@@ -456,7 +459,6 @@
 			files = (
 				6AC8B7582948AC07005E7C66 /* HomePage.storyboard in Resources */,
 				6AC8B75A2948AC2F005E7C66 /* RydeHistory.storyboard in Resources */,
-				6A9034552947311B00A494E2 /* DriverHomePage.storyboard in Resources */,
 				6AC8B7772948B715005E7C66 /* ProfilePage.storyboard in Resources */,
 				6AF07984292F7F9F0000A3F7 /* LaunchScreen.storyboard in Resources */,
 				6AC8B7832948BB70005E7C66 /* Main.storyboard in Resources */,
@@ -464,6 +466,7 @@
 				6A90345E294732B500A494E2 /* GoogleService-Info.plist in Resources */,
 				6AC8B7752948B715005E7C66 /* PassengerProfilePage.storyboard in Resources */,
 				6AC8B77A2948B715005E7C66 /* DriverProfile.storyboard in Resources */,
+				6AC8B78B294A00A3005E7C66 /* DriverHomePage.storyboard in Resources */,
 				6AC8B7652948AC9D005E7C66 /* BookingAndConfirmation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,11 +494,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AC52A3F2941E6B10044D9AE /* SingUpPassengersTableViewController.swift in Sources */,
+				6AC8B78A294A00A3005E7C66 /* DriverHomePageTableViewController.swift in Sources */,
+				6AC8B78E294A00A3005E7C66 /* DriverRideListTableViewCell.swift in Sources */,
 				6AFF281F2934BF8D00775AA7 /* LuanchViewController.swift in Sources */,
 				6AC8B7762948B715005E7C66 /* UserStruct.swift in Sources */,
 				6A90343F2947173B00A494E2 /* Passenger.swift in Sources */,
 				6A90343E2947173B00A494E2 /* Location.swift in Sources */,
 				6AC8B7632948AC9D005E7C66 /* thanksViewController.swift in Sources */,
+				6AC8B78C294A00A3005E7C66 /* AddEditRideTableViewController.swift in Sources */,
 				6AC8B77C2948B8BE005E7C66 /* ProfileViewController.swift in Sources */,
 				6AC8B7722948B715005E7C66 /* EditProfileTableViewController.swift in Sources */,
 				6AC8B75C2948AC40005E7C66 /* HistoryTableViewController.swift in Sources */,
@@ -503,11 +509,9 @@
 				6AC8B7672948AC9D005E7C66 /* trackViewController.swift in Sources */,
 				6AC8B7532948AC07005E7C66 /* LocationSearchViewController.swift in Sources */,
 				6A9034412947173B00A494E2 /* Firebase.swift in Sources */,
-				6A9034572947311B00A494E2 /* DriverRideListTableViewCell.swift in Sources */,
 				6AC8B7662948AC9D005E7C66 /* confirmViewController.swift in Sources */,
 				6A9034422947173B00A494E2 /* Driver.swift in Sources */,
 				6AC8B7572948AC07005E7C66 /* RidesListTableViewCell.swift in Sources */,
-				6A9034562947311B00A494E2 /* AddEditRideTableViewController.swift in Sources */,
 				6A9034402947173B00A494E2 /* DriverTableViewController.swift in Sources */,
 				6AC8B74F2948AC07005E7C66 /* TabViewController.swift in Sources */,
 				6AC8B7502948AC07005E7C66 /* HomeCarouselCollectionViewCell.swift in Sources */,
@@ -518,9 +522,9 @@
 				6AC8B7562948AC07005E7C66 /* RidesListTableViewController.swift in Sources */,
 				6AB50279293C9D04006BD3D6 /* SignupTableViewController.swift in Sources */,
 				6AF07978292F7F9D0000A3F7 /* AppDelegate.swift in Sources */,
-				6A9034542947311B00A494E2 /* DriverHomePageTableViewController.swift in Sources */,
 				6A9034432947173B00A494E2 /* Ride.swift in Sources */,
 				6AEB42B2293C85EB00B2A949 /* LoginViewController.swift in Sources */,
+				6AC8B78D294A00A3005E7C66 /* PassengerNoViewController.swift in Sources */,
 				6AF0797A292F7F9D0000A3F7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

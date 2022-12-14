@@ -39,6 +39,20 @@ class LoginViewController: UIViewController {
             return
             
         }
+        
+        if passwordField.text == "" {
+            print("Password field is empty")
+            
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 4
+            animation.autoreverses = false
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: passwordField.center.x - 6, y: passwordField.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: passwordField.center.x + 6, y: passwordField.center.y))
+
+            passwordField.layer.add(animation, forKey: "position")
+        }
+        
 //        if passwordField.text?.isEmpty == false || password != passwordField {
 //            performSegue(withIdentifier: "Profile", sender: sender)
 //        } else {

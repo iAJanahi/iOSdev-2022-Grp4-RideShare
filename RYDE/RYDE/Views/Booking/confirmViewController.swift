@@ -118,7 +118,13 @@ class confirmViewController: UIViewController {
     @IBAction func payWithAppleButtonTapped(_ sender: Any) {
 //        getUserName()
         let alert = UIAlertController(title: "Payment Successful", message: "Thank you for your payment !", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [self] action in
+//            print(Auth.auth().currentUser?.uid)
+//            print(self.userLat)
+//            print(self.userLong)
+    
+            sendPassengerToFB(long: self.userLong ?? 0, lat: self.userLat ?? 0, name: self.fullName, rideID: self.bookedRide?.rideId ?? "")
+            
             self.DismissView()
         }))
         
@@ -126,7 +132,13 @@ class confirmViewController: UIViewController {
     }
     @IBAction func payWithBenefitButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Payment Successful", message: "Thank you for your payment !", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [self] action in
+//            print(Auth.auth().currentUser?.uid)
+//            print(self.userLat)
+//            print(self.userLong)
+    
+            sendPassengerToFB(long: self.userLong ?? 0, lat: self.userLat ?? 0, name: self.fullName, rideID: self.bookedRide?.rideId ?? "")
+            
             self.DismissView()
         }))
         
@@ -168,7 +180,7 @@ class confirmViewController: UIViewController {
         let ref = Database.database(url: FBReference.databaseRef).reference()
         
 //        let rId = UUID().uuidString // Ride ID
-        ref.child("RidesPassengers").child("\(rideID)").child("\(Auth.auth().currentUser?.uid!)").setValue([
+        ref.child("RidesPassengers").child("\(rideID)").child("\(Auth.auth().currentUser!.uid)").setValue([
             "Name": fullName,
             "Longtitude": long,
             "Latitude": lat
