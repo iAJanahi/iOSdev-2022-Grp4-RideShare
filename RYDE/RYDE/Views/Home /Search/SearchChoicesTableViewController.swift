@@ -49,12 +49,15 @@ class SearchChoicesTableViewController: UITableViewController, getSelectedLocati
         
         // Initializing no Of passengers label
         noOfPassengersLabel.text = Int(passengerStepper.value).description
-
-
+        
+        self.tableView.layer.cornerRadius = 10
+        
     }
     
+        
     
     
+   
     
     // MARK: Table view setups
     

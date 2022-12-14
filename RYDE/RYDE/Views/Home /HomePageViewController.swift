@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class HomePageViewController: UIViewController {
     
@@ -23,7 +24,10 @@ class HomePageViewController: UIViewController {
     @IBOutlet var sliderCollectionView: UICollectionView!
     
     @IBOutlet var pageControlView: UIPageControl!
+    @IBOutlet weak var mapView: MKMapView!
     
+    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,27 @@ class HomePageViewController: UIViewController {
         pageControlView.numberOfPages = imagesArray.count
         // Do any additional setup after loading the view.
         startTimer()
+        
+        //Get user location
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+
+        // Specifies region to start with
+        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        
+        mapView.setRegion(region, animated: true)
+        
+        // Sets limit to the camera movements
+        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
+        
+        // Zoom range
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 30000)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
+        mapView.showsUserLocation = true
+        
+        mapView.layer.cornerRadius = 10.0
     }
     
 

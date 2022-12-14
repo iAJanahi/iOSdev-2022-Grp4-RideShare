@@ -93,7 +93,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(ridesArray[indexPath.row])
+        print(filteredArray[indexPath.row])
     }
 
  
@@ -248,7 +248,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     @IBSegueAction func goToConfirmPage(_ coder: NSCoder, sender: Any?) -> UIViewController? {
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell)  {
             print("Entered IF")
-            let rideToSend = ridesArray[indexPath.row]
+            let rideToSend = filteredArray[indexPath.row]
             
             getCoordinates()
             

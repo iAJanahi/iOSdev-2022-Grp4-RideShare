@@ -324,6 +324,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iSV-hX-LYt"/>
                     <connections>
+                        <outlet property="confirmationView" destination="ni7-XG-16R" id="yQH-uE-Mry"/>
                         <outlet property="driverName" destination="T14-f8-hSc" id="aBk-9Z-Ngr"/>
                         <outlet property="goingTime" destination="Qwx-3T-q2h" id="0Rb-Sb-4KX"/>
                         <outlet property="noOfPassengers" destination="fV2-xw-dI2" id="y4P-8n-ezg"/>
@@ -358,9 +359,6 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="Vf7-iY-QKL" kind="show" id="yMy-vi-HXX"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank you for using RYDE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpM-El-LKt">
                                 <rect key="frame" x="72" y="112" width="257" height="97"/>

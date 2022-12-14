@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="puH-Id-R41">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pV9-Xj-Bse">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,139 +8,249 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Current RYDE-->
-        <scene sceneID="noY-y9-PbP">
-            <objects>
-                <tableViewController title="Current RYDE" id="vxJ-Mj-0HZ" customClass="HistoryTableViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="eIW-bP-U5n">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ew2-rP-dzF">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Current"/>
-                                <segment title="Completed"/>
-                            </segments>
-                        </segmentedControl>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="110" id="WNL-QG-wzt">
-                                <rect key="frame" x="0.0" y="81.5" width="414" height="110"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WNL-QG-wzt" id="a3H-lz-lw6">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aa5-vh-8r5">
-                                            <rect key="frame" x="106" y="43" width="36" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick up Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhY-v0-apx" userLabel="PickUpTimeLabel">
-                                            <rect key="frame" x="23" y="82" width="103" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12:15 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ziw-Ez-4fe" userLabel="pickUpTime">
-                                            <rect key="frame" x="134" y="82" width="69" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJ2-ZS-h2b">
-                                            <rect key="frame" x="285" y="11" width="109" height="78"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="Track Your RYDE" cornerStyle="medium">
-                                                <fontDescription key="titleFontDescription" name=".SFNS-Regular" family=".SF NS" pointSize="18"/>
-                                            </buttonConfiguration>
-                                            <connections>
-                                                <segue destination="Ejq-fp-Vde" kind="show" id="8hY-Al-ieW"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-pq-eXq">
-                                            <rect key="frame" x="106" y="14" width="95" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="vxJ-Mj-0HZ" id="dPi-R9-e2Q"/>
-                            <outlet property="delegate" destination="vxJ-Mj-0HZ" id="VqR-3O-IDE"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="RYDE History" id="Bsb-HY-dfg"/>
-                    <connections>
-                        <outlet property="segment" destination="ew2-rP-dzF" id="QFC-ky-PqF"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nJb-RQ-KRv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1921.7391304347827" y="1073.4375"/>
-        </scene>
         <!--Tracking-->
         <scene sceneID="TfP-xs-QBW">
             <objects>
-                <viewController title="Tracking" id="Ejq-fp-Vde" customClass="trackViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tracking" id="Ejq-fp-Vde" customClass="MapViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0i1-d3-cJH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Ib-zc-TW0">
-                                <rect key="frame" x="87" y="146" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q74-i1-8Vh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pii-UL-BSx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q74-i1-8Vh" firstAttribute="leading" secondItem="Pii-UL-BSx" secondAttribute="leading" id="Png-hU-GPM"/>
+                            <constraint firstItem="Pii-UL-BSx" firstAttribute="trailing" secondItem="Q74-i1-8Vh" secondAttribute="trailing" id="fsk-Ux-oCl"/>
+                            <constraint firstItem="Q74-i1-8Vh" firstAttribute="top" secondItem="Pii-UL-BSx" secondAttribute="top" id="idc-Qx-xCg"/>
+                            <constraint firstItem="Pii-UL-BSx" firstAttribute="bottom" secondItem="Q74-i1-8Vh" secondAttribute="bottom" id="uK8-lV-xOM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nHz-0d-Mpu"/>
-                    <connections>
-                        <outlet property="circle" destination="8Ib-zc-TW0" id="IyD-Wq-x6R"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWe-wn-hQk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2968" y="1073"/>
+            <point key="canvasLocation" x="3876.811594202899" y="1072.7678571428571"/>
         </scene>
-        <!--RYDE-->
-        <scene sceneID="Uwp-c8-eY4">
+        <!--RYDE History-->
+        <scene sceneID="qJJ-9a-Mv8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="puH-Id-R41" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="RYDE" image="bus" catalog="system" id="Bof-c9-418"/>
+                <viewController id="nBi-Dk-f9W" customClass="HistoryViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmJ-Tx-2BA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8yh-zf-hxN">
+                                <rect key="frame" x="0.0" y="262" width="414" height="634"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyCell" rowHeight="181" id="jgk-kg-obn" customClass="HistoryTableViewCell" customModule="RYDE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="181"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgk-kg-obn" id="ebB-Na-mCc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSx-Uv-Jq1">
+                                                    <rect key="frame" x="243" y="41" width="162" height="64"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <backgroundConfiguration key="background" cornerRadius="10">
+                                                            <color key="backgroundColor" red="0.5127077699" green="0.77960461380000001" blue="0.82748216389999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </backgroundConfiguration>
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Rate Your RYDE">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <font key="NSFont" size="18" name="Helvetica-Bold"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-GD-HQW">
+                                                    <rect key="frame" x="15" y="25" width="226" height="118.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mohd Ali" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBp-yv-JdJ">
+                                                            <rect key="frame" x="79.5" y="0.0" width="67" height="33.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1-1-2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE7-49-ZFz">
+                                                            <rect key="frame" x="78" y="55.5" width="70.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C1M-fh-eE5">
+                                                            <rect key="frame" x="19.5" y="98" width="187" height="20.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Up Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2e-on-aXA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KS-TH-7Zq">
+                                                                    <rect key="frame" x="115" y="0.0" width="72" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="mSx-Uv-Jq1" firstAttribute="top" secondItem="ebB-Na-mCc" secondAttribute="topMargin" constant="30" id="9rg-ij-Xnb"/>
+                                                <constraint firstItem="mSx-Uv-Jq1" firstAttribute="leading" secondItem="gqd-GD-HQW" secondAttribute="trailing" constant="2" id="Fdx-q6-q0U"/>
+                                                <constraint firstItem="mSx-Uv-Jq1" firstAttribute="trailing" secondItem="ebB-Na-mCc" secondAttribute="trailingMargin" constant="11" id="GYe-8V-Nuy"/>
+                                                <constraint firstAttribute="bottom" secondItem="gqd-GD-HQW" secondAttribute="bottom" constant="37.5" id="Hx2-MZ-6QH"/>
+                                                <constraint firstItem="gqd-GD-HQW" firstAttribute="top" secondItem="ebB-Na-mCc" secondAttribute="top" constant="25" id="J3m-Py-U3o"/>
+                                                <constraint firstItem="gqd-GD-HQW" firstAttribute="leading" secondItem="ebB-Na-mCc" secondAttribute="leading" constant="15" id="LqD-RU-3oD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mSx-Uv-Jq1" secondAttribute="bottom" constant="65" id="Mgp-vF-6Nx"/>
+                                                <constraint firstItem="mSx-Uv-Jq1" firstAttribute="leading" secondItem="gqd-GD-HQW" secondAttribute="trailing" constant="2" id="gQd-83-ISS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="OE7-49-ZFz" id="8FN-9U-pzl"/>
+                                            <outlet property="driverNameLabel" destination="cBp-yv-JdJ" id="hmU-1D-UgD"/>
+                                            <outlet property="pickUpTimeLabel" destination="3KS-TH-7Zq" id="uz4-XC-Kgz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nBi-Dk-f9W" id="vQm-10-2Px"/>
+                                    <outlet property="delegate" destination="nBi-Dk-f9W" id="06a-dc-kYq"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-Fu-tTd">
+                                <rect key="frame" x="23" y="123" width="196" height="97.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="5Or-Fn-r4x">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="97.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-l8-Yj7">
+                                                <rect key="frame" x="50.5" y="0.0" width="95" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-VX-efp">
+                                                <rect key="frame" x="80" y="38.5" width="36" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2tZ-Yb-Bx3">
+                                                <rect key="frame" x="10" y="77" width="176" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9w-0r-7HI" userLabel="PickUpTimeLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:15 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4J-xy-71b" userLabel="pickUpTime">
+                                                        <rect key="frame" x="107.5" y="0.0" width="68.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-kg-RkX">
+                                <rect key="frame" x="234" y="148" width="170" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" cornerRadius="10">
+                                        <color key="backgroundColor" red="0.93626743560000003" green="0.91948753599999999" blue="0.31322893499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Track Your RYDE">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="18" name="Helvetica-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Ejq-fp-Vde" kind="show" id="UiS-61-1wo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mLb-Zi-JhV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8yh-zf-hxN" firstAttribute="top" secondItem="gzw-Fu-tTd" secondAttribute="bottom" constant="41.5" id="4IN-ln-aGU"/>
+                            <constraint firstItem="8yh-zf-hxN" firstAttribute="trailing" secondItem="mLb-Zi-JhV" secondAttribute="trailing" id="6TM-Bg-vfU"/>
+                            <constraint firstAttribute="bottom" secondItem="8yh-zf-hxN" secondAttribute="bottom" id="ALi-to-O90"/>
+                            <constraint firstItem="8yh-zf-hxN" firstAttribute="top" secondItem="gzw-Fu-tTd" secondAttribute="bottom" constant="41.5" id="EuR-Wh-iCu"/>
+                            <constraint firstItem="6hQ-kg-RkX" firstAttribute="leading" secondItem="gzw-Fu-tTd" secondAttribute="trailing" constant="15" id="Hfb-nr-gvr"/>
+                            <constraint firstItem="8yh-zf-hxN" firstAttribute="top" secondItem="6hQ-kg-RkX" secondAttribute="bottom" constant="64" id="JpJ-5D-llL"/>
+                            <constraint firstItem="gzw-Fu-tTd" firstAttribute="top" secondItem="mLb-Zi-JhV" secondAttribute="top" constant="35" id="QDy-Fj-80j"/>
+                            <constraint firstItem="gzw-Fu-tTd" firstAttribute="leading" secondItem="mLb-Zi-JhV" secondAttribute="leading" constant="23" id="RTc-ei-Njd"/>
+                            <constraint firstItem="8yh-zf-hxN" firstAttribute="leading" secondItem="mLb-Zi-JhV" secondAttribute="leading" id="aKd-Er-Cce"/>
+                            <constraint firstItem="mLb-Zi-JhV" firstAttribute="trailing" secondItem="6hQ-kg-RkX" secondAttribute="trailing" constant="10" id="dRg-2g-ypX"/>
+                            <constraint firstItem="6hQ-kg-RkX" firstAttribute="top" secondItem="mLb-Zi-JhV" secondAttribute="top" constant="60" id="in4-tb-nL2"/>
+                            <constraint firstItem="6hQ-kg-RkX" firstAttribute="leading" secondItem="gzw-Fu-tTd" secondAttribute="trailing" constant="15" id="yO7-ln-vJg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="RYDE History" id="Vdg-B7-7IV"/>
+                    <connections>
+                        <outlet property="completedTableView" destination="8yh-zf-hxN" id="7Gk-4U-myR"/>
+                        <outlet property="dateLabel" destination="5lH-VX-efp" id="3Dh-4t-krQ"/>
+                        <outlet property="driverNameLabel" destination="9Ra-l8-Yj7" id="nro-l1-gKp"/>
+                        <outlet property="pickTimeLabel" destination="z4J-xy-71b" id="Psn-Zy-xrF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s5p-cq-HaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2879.7101449275365" y="1072.7678571428571"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="mpi-mT-4x0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pV9-Xj-Bse" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="bus" catalog="system" id="5l9-oy-Ube"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oZN-bz-Kcd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7D0-7F-LvN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vxJ-Mj-0HZ" kind="relationship" relationship="rootViewController" id="g8c-dz-71B"/>
+                        <segue destination="nBi-Dk-f9W" kind="relationship" relationship="rootViewController" id="oaI-cI-ojO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DVA-Jg-08W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdv-h2-xIN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011.5942028985507" y="1073.4375"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="1072.7678571428571"/>
         </scene>
     </scenes>
     <resources>
         <image name="bus" catalog="system" width="128" height="122"/>
-        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

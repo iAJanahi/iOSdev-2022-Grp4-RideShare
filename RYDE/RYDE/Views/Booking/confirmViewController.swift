@@ -22,6 +22,7 @@ class confirmViewController: UIViewController {
     @IBOutlet weak var goingTime: UILabel!
     @IBOutlet weak var returnTime: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var confirmationView: UIView!
     
     var fullName = ""
     
@@ -49,6 +50,8 @@ class confirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        confirmationView.layer.cornerRadius = 10
+        
         getUserName()
         if let bookedRide = bookedRide, let selectedSeats = selectedSeats {
             print(bookedRide)
