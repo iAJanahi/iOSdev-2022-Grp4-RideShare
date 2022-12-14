@@ -25,14 +25,21 @@ class confirmViewController: UIViewController {
     
     var fullName = ""
     
+
+    
     
     
     var bookedRide: Ride?
     var selectedSeats: Int?
+    var userLong: Double?
+    var userLat: Double?
     
-    init?(coder: NSCoder, bookedRide: Ride, selectedSeats: Int) {
+    init?(coder: NSCoder, bookedRide: Ride, selectedSeats: Int, userLong: Double, userLat: Double) {
         self.bookedRide = bookedRide
         self.selectedSeats = selectedSeats
+        self.userLong = userLong
+        self.userLat = userLat
+    
         super.init(coder: coder)
     }
     required init?(coder: NSCoder) {
@@ -42,7 +49,7 @@ class confirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        getUserName()
+        getUserName()
         if let bookedRide = bookedRide, let selectedSeats = selectedSeats {
             print(bookedRide)
             noOfPassengers.text = "x\(selectedSeats)"
@@ -118,9 +125,27 @@ class confirmViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     @IBAction func payWithBenefitButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Payment Successful", message: "Thank you for your payment !", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+            self.DismissView()
+        }))
+        
+        present(alert, animated: true, completion: nil)
         
     }
     @IBAction func payWithCashButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Payment Successful", message: "Thank you for your payment !", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [self] action in
+//            print(Auth.auth().currentUser?.uid)
+//            print(self.userLat)
+//            print(self.userLong)
+    
+            sendPassengerToFB(long: self.userLong ?? 0, lat: self.userLat ?? 0, name: self.fullName, rideID: self.bookedRide?.rideId ?? "")
+            
+            self.DismissView()
+        }))
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
@@ -131,7 +156,25 @@ class confirmViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        delegation?.goToHome()
+//        delegation?.goToHome()
+        _ = self.tabBarController?.selectedIndex = 1
+
+    }
+    
+    
+    func sendPassengerToFB(long: Double, lat: Double, name: String, rideID: String) {
+        print(" \(long)-\(lat) / \(name) / \(rideID)")
+        
+        let ref = Database.database(url: FBReference.databaseRef).reference()
+        
+//        let rId = UUID().uuidString // Ride ID
+        ref.child("RidesPassengers").child("\(rideID)").child("\(Auth.auth().currentUser?.uid!)").setValue([
+            "Name": fullName,
+            "Longtitude": long,
+            "Latitude": lat
+        ])
+        
+        
     }
     
 

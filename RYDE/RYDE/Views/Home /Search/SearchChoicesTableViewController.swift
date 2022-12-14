@@ -277,6 +277,7 @@ class SearchChoicesTableViewController: UITableViewController, getSelectedLocati
         return RidesListTableViewController(coder: coder, rideF: RideSelectedInformation)
     }
     
+
 }
 
 

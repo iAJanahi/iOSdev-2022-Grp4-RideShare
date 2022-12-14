@@ -34,7 +34,9 @@ struct rideFilter {
     var date: String
     var goingTime: String
     var returnTime: String
-    var noOfPassengers: Int    
+    var noOfPassengers: Int
+    var currentLatitude: Double?
+    var currentLongtitude: Double?
 }
 
 struct tempRide {

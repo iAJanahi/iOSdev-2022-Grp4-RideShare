@@ -26,7 +26,7 @@ class LocationSearchViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: Search page data
     let DataDemo =  [
-        Section(type: "Known Places", location: ["University of Bahrain", "Polytechnic", "Manama Souq", "Muharraq Souq", "City Centre"]),
+        Section(type: "Known Places", location: ["- CurrentLocation -", "University of Bahrain", "Polytechnic", "Manama Souq", "Muharraq Souq", "City Centre"]),
         Section(type: "Cities/Towns", location: ["Muharraq", "Galali", "Madinat Isa", "Busaiteen", "AlHidd", "AlDair", "Samaheej", "Diyar AlMuharraq", "Zallaq", "Manama"])
     ]
     

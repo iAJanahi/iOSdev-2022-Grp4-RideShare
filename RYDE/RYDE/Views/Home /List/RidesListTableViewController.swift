@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import CoreLocation
 
 class RidesListTableViewController: UITableViewController, ConfirmFromRideDelegate {
     
@@ -23,6 +24,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
 //    ]
     
     var ridesArray = [Ride]()
+    
     var filteredArray = [Ride]()
     
     var tempFrom: String?
@@ -46,23 +48,32 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
         self.refreshControl!.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
 
         
+//        DispatchQueue.main.async {
+//            self.filterArray()
+//        }
+    
         populateRideListData()
-        print(ridesArray)
+        
+//        print(ridesArray)
         if let rideFilter = rideFilter {
             print(rideFilter)
             navBarSearchButton.setTitle("    \(rideFilter.fromLocation) -- \(rideFilter.toLocation)", for: .normal)
+            if rideFilter.fromLocation == "- Current Location -" {
+                print("Current")
+                getCoordinates()
+            }
             
         }
         else {
             print("No filter was selected!")
         }
-//        print(filteredArray.count)
-//        print(filteredArray)
+
     }
 
     @objc func refresh(sender: AnyObject) {
        // Code to refresh table view
-        populateRideListData()
+//        populateRideListData()
+        filterArray()
         self.refreshControl?.endRefreshing()
     }
     // MARK: - Table view data source
@@ -74,9 +85,6 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ridesCell", for: indexPath) as! RidesListTableViewCell
-        
-//        print(ridesArray[indexPath.row].fromLocation)
-//        print(rideFilter?.fromLocation)
         
         cell.configureCell(ride: filteredArray[indexPath.row])
             
@@ -109,6 +117,8 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     @IBAction func filterButtonTapped(_ sender: Any) {
 //        populateRideListData()
         filterArray()
+        getCoordinates()
+        print(rideFilter)
         
     }
     
@@ -117,8 +127,8 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     // MARK: Firebase
     // Reading from database
     func populateRideListData() {
-//        ridesArray = []
-//        var tempArray: NSDictionary?
+
+    
         let ref = Database.database(url: FBReference.databaseRef).reference()
         
         ref.child("users").child("drivers").observeSingleEvent(of: .value) { [self] (snapshot) in
@@ -131,7 +141,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
                         if let rValue = rideSnapshot.value as? NSDictionary{
 //                            print(rValue.allKeys)
                             for j in rValue.allKeys {
-                                ref.child("users").child("drivers").child(i as! String).child("Rides").child("\(j)").observeSingleEvent(of: .value) {
+                                ref.child("users").child("drivers").child(i as! String).child("Rides").child("\(j)").observeSingleEvent(of: .value) { [self]
                                     (infoSnapshot) in
                                     
                                     if let infoValue = infoSnapshot.value as? NSDictionary {
@@ -157,39 +167,32 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
 
                                             print("Data for ride ID: \(j)  -- loaded and saved to array...")
 //                                            print(self.ridesArray)
+                                         
                                             self.tableView.reloadData()
                                         }
-                                        
-                                        
                                     }
                                 }
                             }
-
-
-
                         }
-                        
-                        
-                        
-                        
                         else {
                             print("Inner value not found!")
                         }
-                        
                     }
                 }
-
             }
             else {
                 print("Value Not Found: Error Fetching data!")
             }
         }
         
-        filterArray()
         
     }
     
+    
+    
+    
     func filterArray() {
+        filteredArray = []
         print("Rides Array: \(ridesArray)")
         for ride in ridesArray {
             if ride.fromLocation == rideFilter?.fromLocation && ride.toLocation == rideFilter?.toLocation {
@@ -225,6 +228,9 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
                 }
                 else {
                     print("Date NOT between")
+                    let alert = UIAlertController(title: "Alert", message: "Rides not found within the selected filter! Please try other times.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
         
             
@@ -244,7 +250,9 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
             print("Entered IF")
             let rideToSend = ridesArray[indexPath.row]
             
-            return confirmViewController(coder: coder, bookedRide: rideToSend, selectedSeats: rideFilter!.noOfPassengers)
+            getCoordinates()
+            
+            return confirmViewController(coder: coder, bookedRide: rideToSend, selectedSeats: rideFilter!.noOfPassengers, userLong: rideFilter?.currentLongtitude ?? 0, userLat: rideFilter?.currentLatitude ?? 0)
         }
         else {
             print("ELSE")
@@ -257,4 +265,20 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
         self.performSegue(withIdentifier: "unwindToHome", sender: self)
     }
     
+    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+    // Function to get coordinates of user location
+    func getCoordinates() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = kCLDistanceFilterNone
+            locationManager.startUpdatingLocation()
+    
+//        print(locationManager.location?.coordinate)
+        rideFilter?.currentLongtitude = locationManager.location?.coordinate.longitude
+        rideFilter?.currentLatitude = locationManager.location?.coordinate.latitude
+        
+        
+    }
+    
+
 }
