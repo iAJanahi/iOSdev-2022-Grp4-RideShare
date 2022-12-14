@@ -32,7 +32,7 @@ struct rideFilter {
     var fromLocation: String
     var toLocation: String
     var date: String
-    var gointTime: String
+    var goingTime: String
     var returnTime: String
     var noOfPassengers: Int    
 }

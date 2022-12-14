@@ -23,6 +23,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
 //    ]
     
     var ridesArray = [Ride]()
+    var filteredArray = [Ride]()
     
     var tempFrom: String?
     var tempTo: String?
@@ -39,32 +40,46 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl!.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
 
+        
         populateRideListData()
-//        print(ridesArray)
+        print(ridesArray)
         if let rideFilter = rideFilter {
             print(rideFilter)
             navBarSearchButton.setTitle("    \(rideFilter.fromLocation) -- \(rideFilter.toLocation)", for: .normal)
+            
         }
         else {
             print("No filter was selected!")
         }
-        print(ridesArray.count)
-        print(ridesArray)
+//        print(filteredArray.count)
+//        print(filteredArray)
     }
 
+    @objc func refresh(sender: AnyObject) {
+       // Code to refresh table view
+        populateRideListData()
+        self.refreshControl?.endRefreshing()
+    }
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ridesArray.count
+        return filteredArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ridesCell", for: indexPath) as! RidesListTableViewCell
         
-        cell.configureCell(ride: ridesArray[indexPath.row])
-
+//        print(ridesArray[indexPath.row].fromLocation)
+//        print(rideFilter?.fromLocation)
+        
+        cell.configureCell(ride: filteredArray[indexPath.row])
+            
         return cell
     }
     
@@ -93,6 +108,8 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     
     @IBAction func filterButtonTapped(_ sender: Any) {
 //        populateRideListData()
+        filterArray()
+        
     }
     
     
@@ -101,7 +118,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
     // Reading from database
     func populateRideListData() {
 //        ridesArray = []
-        var tempArray: NSDictionary?
+//        var tempArray: NSDictionary?
         let ref = Database.database(url: FBReference.databaseRef).reference()
         
         ref.child("users").child("drivers").observeSingleEvent(of: .value) { [self] (snapshot) in
@@ -168,9 +185,57 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
             }
         }
         
+        filterArray()
+        
     }
     
-    
+    func filterArray() {
+        print("Rides Array: \(ridesArray)")
+        for ride in ridesArray {
+            if ride.fromLocation == rideFilter?.fromLocation && ride.toLocation == rideFilter?.toLocation {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                
+                let timeFormatter = DateFormatter()
+                timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+                timeFormatter.dateFormat = "h:mm a"
+                
+                
+                let filterDate = dateFormatter.date(from: rideFilter!.date)
+                let fromDate = dateFormatter.date(from: ride.dateFrom!)
+                let toDate = dateFormatter.date(from: ride.dateTo!)
+                
+                let filterGoingTime = timeFormatter.date(from: rideFilter!.goingTime)
+                let filterReturnTime = timeFormatter.date(from: rideFilter!.returnTime)
+                
+                let goingTime = timeFormatter.date(from: ride.goingTime!)
+                let returnTime = timeFormatter.date(from: ride.returnTime!)
+                
+//                print(" \(filterDate) -- \(fromDate) -- \(toDate) ")
+//                print("Filter time: \(filterGoingTime)-\(filterReturnTime)")
+//                print("Actual time: \(goingTime)-\(returnTime)")
+
+                
+                if (fromDate! ... toDate!).contains(filterDate!) && (goingTime! ... returnTime!).contains(filterGoingTime!) && (goingTime! ... returnTime!).contains(filterReturnTime!) {
+                    print("Date between")
+                    
+                    filteredArray.append(ride)
+
+                }
+                else {
+                    print("Date NOT between")
+                }
+        
+            
+            }
+            else if rideFilter?.fromLocation == "" && rideFilter?.fromLocation == "" {
+                filteredArray = ridesArray
+            }
+        }
+        print("Filtered: \(filteredArray)")
+        tableView.reloadData()
+    }
     
     
     // Sending data to confirm page
@@ -179,7 +244,7 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
             print("Entered IF")
             let rideToSend = ridesArray[indexPath.row]
             
-            return confirmViewController(coder: coder, bookedRide: rideToSend, selectedSeats: 3)
+            return confirmViewController(coder: coder, bookedRide: rideToSend, selectedSeats: rideFilter!.noOfPassengers)
         }
         else {
             print("ELSE")

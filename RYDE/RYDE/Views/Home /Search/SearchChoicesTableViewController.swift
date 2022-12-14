@@ -272,7 +272,7 @@ class SearchChoicesTableViewController: UITableViewController, getSelectedLocati
     }
     
     @IBSegueAction func goToRideListPage(_ coder: NSCoder) -> RidesListTableViewController? {
-        let RideSelectedInformation = rideFilter(fromLocation: tempFromLoc, toLocation: tempToLoc, date: datePicker.date.formatted(date: .complete, time: .omitted), gointTime: goingTimePicker.date.formatted(date: .omitted, time: .shortened), returnTime: returnTimePicker.date.formatted(date: .omitted, time: .shortened), noOfPassengers: tempStepper)
+        let RideSelectedInformation = rideFilter(fromLocation: tempFromLoc, toLocation: tempToLoc, date: datePicker.date.formatted(date: .numeric, time: .omitted), goingTime: goingTimePicker.date.formatted(date: .omitted, time: .shortened), returnTime: returnTimePicker.date.formatted(date: .omitted, time: .shortened), noOfPassengers: tempStepper)
         
         return RidesListTableViewController(coder: coder, rideF: RideSelectedInformation)
     }
