@@ -250,7 +250,6 @@
 				6AC8B7602948AC9D005E7C66 /* BookingAndConfirmation.storyboard */,
 				6AC8B75E2948AC9D005E7C66 /* thanksViewController.swift */,
 				6AC8B7612948AC9D005E7C66 /* confirmViewController.swift */,
-				6AC8B7622948AC9D005E7C66 /* trackViewController.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -291,6 +290,7 @@
 				6AC8B791294A26EA005E7C66 /* RydeHistory.storyboard */,
 				6AC8B792294A26EA005E7C66 /* MapViewController.swift */,
 				6AC8B793294A26EA005E7C66 /* HistoryViewController.swift */,
+				6AC8B7622948AC9D005E7C66 /* trackViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";

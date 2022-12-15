@@ -15,7 +15,10 @@ class LuanchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

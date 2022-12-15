@@ -114,6 +114,7 @@ class SingUpPassengersTableViewController: UITableViewController {
             let alert = UIAlertController(title: "Success", message: "Account Successfully created", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                 self.navigationController?.popToRootViewController(animated: true)
+
         }))
             self.present(alert, animated: true)
         })

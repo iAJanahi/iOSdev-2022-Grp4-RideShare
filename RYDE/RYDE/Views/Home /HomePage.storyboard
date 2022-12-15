@@ -398,7 +398,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0u-DsG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Who?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0u-DsG">
                                                     <rect key="frame" x="153.5" y="17.5" width="67.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -784,7 +784,7 @@
         <!--Tab View Controller-->
         <scene sceneID="wpb-6g-c0z">
             <objects>
-                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" id="Cl8-sh-0od" customClass="TabViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Cl8-sh-0od" customClass="TabViewController" customModule="RYDE" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Snb-sN-fFc">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -825,7 +825,7 @@
         <!--Home-->
         <scene sceneID="O3q-bq-hW4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pLH-UF-Euc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="pLH-UF-Euc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="FgV-6H-WeE">
                         <color key="badgeColor" red="0.59876710180000003" green="0.83148956299999999" blue="0.87813144919999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>

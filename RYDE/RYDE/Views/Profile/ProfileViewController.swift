@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "user_uid_key")
             
             self.navigationController?.popToRootViewController(animated: true)
+//            self.performSegue(withIdentifier: "goToLogin", sender: nil)
         } catch {
             print("Error Signing out")
         }

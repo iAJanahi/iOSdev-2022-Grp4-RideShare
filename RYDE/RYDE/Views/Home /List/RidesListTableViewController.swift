@@ -195,7 +195,8 @@ class RidesListTableViewController: UITableViewController, ConfirmFromRideDelega
         filteredArray = []
         print("Rides Array: \(ridesArray)")
         for ride in ridesArray {
-            if ride.fromLocation == rideFilter?.fromLocation && ride.toLocation == rideFilter?.toLocation {
+//            if (ride.fromLocation == rideFilter?.fromLocation && ride.toLocation == rideFilter?.toLocation) || rideFilter?.fromLocation == "- Current Location -" {
+            if ride.toLocation == rideFilter?.toLocation {
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                 dateFormatter.dateFormat = "MM/dd/yyyy"

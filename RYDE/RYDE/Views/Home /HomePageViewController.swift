@@ -45,12 +45,12 @@ class HomePageViewController: UIViewController {
         locationManager.startUpdatingLocation()
 
         // Specifies region to start with
-        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
         
         mapView.setRegion(region, animated: true)
         
         // Sets limit to the camera movements
-        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
+//        mapView.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
         
         // Zoom range
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 30000)

@@ -17,7 +17,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var pickTimeLabel: UILabel!
     
     
-    var passenger: [Ride] = [Ride(rideId: "0934bfjd", goingTime: "12:00PM", returnTime: "1:00PM", dateFrom: "1-1-2023", dateTo: "1-1-2023", driverName: "Jassim Mulla", fromLocation: "Riffa", toLocation: "UOB", price: "2 BD", noOfPassengers: 1, noOfSeats: "16")]
+    var passenger: [Ride] = [Ride(rideId: "0934bfjd", goingTime: "12:00PM", returnTime: "1:00PM", dateFrom: "15-12-2022", dateTo: "1-1-2023", driverName: "Philipe Pringuet", fromLocation: "Saar", toLocation: "Polytechnic", price: "2 BD", noOfPassengers: 1, noOfSeats: "16")]
     
     var completedRide : [Ride] = [Ride(rideId: "reor3432", goingTime: "08:00 AM", returnTime: "2:00 PM", dateFrom: "11-12-2022", dateTo: "11-12-2022", driverName: "Abdulla Isa", fromLocation: "Manama", toLocation: "Polytechnic", price: "3 BD", noOfPassengers: 2, noOfSeats: "12")]
     
@@ -38,6 +38,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         // Do any additional setup after loading the view.
         completedTableView.delegate = self
