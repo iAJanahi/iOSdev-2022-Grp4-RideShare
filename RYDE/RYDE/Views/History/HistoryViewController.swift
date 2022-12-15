@@ -17,9 +17,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var pickTimeLabel: UILabel!
     
     
-    var passenger: [Ride] = [Ride(rideId: "0934bfjd", goingTime: "12:00PM", returnTime: "1:00PM", dateFrom: "15-12-2022", dateTo: "1-1-2023", driverName: "Philipe Pringuet", fromLocation: "Saar", toLocation: "Polytechnic", price: "2 BD", noOfPassengers: 1, noOfSeats: "16")]
+    var passenger: [Ride] = [Ride(rideId: "0934bfjd", goingTime: "12:00PM", returnTime: "1:00PM", dateFrom: "15-12-2022", dateTo: "1-1-2023", driverName: "AbdulNabi Ali", fromLocation: "Saar", toLocation: "Polytechnic", price: "2 BD", noOfPassengers: 1, noOfSeats: "16")]
     
-    var completedRide : [Ride] = [Ride(rideId: "reor3432", goingTime: "08:00 AM", returnTime: "2:00 PM", dateFrom: "11-12-2022", dateTo: "11-12-2022", driverName: "Abdulla Isa", fromLocation: "Manama", toLocation: "Polytechnic", price: "3 BD", noOfPassengers: 2, noOfSeats: "12")]
+    var completedRide : [Ride] = [Ride(rideId: "reor3432", goingTime: "08:00 AM", returnTime: "2:00 PM", dateFrom: "11-12-2022", dateTo: "11-12-2022", driverName: "Ahmed Isa", fromLocation: "Manama", toLocation: "Polytechnic", price: "3 BD", noOfPassengers: 2, noOfSeats: "12")]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completedRide.count
